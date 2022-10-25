@@ -193,7 +193,7 @@ List<List<double>> noise2(int width, int height,
         for (var y = 0; y < height; y++) {
           final dx = x * frequency, dy = y * frequency;
 
-          map[x][y] = noise.singleSimplex2(seed, dx.toInt(), dy.toInt());
+          map[x][y] = noise.singleSimplex2(seed, dx, dy);
         }
       }
 
@@ -216,16 +216,13 @@ List<List<double>> noise2(int width, int height,
 
           switch (fractalType) {
             case FractalType.FBM:
-              map[x][y] =
-                  noise.singleSimplexFractalFBM2(dx.toInt(), dy.toInt());
+              map[x][y] = noise.singleSimplexFractalFBM2(dx, dy);
               break;
             case FractalType.Billow:
-              map[x][y] =
-                  noise.singleSimplexFractalBillow2(dx.toInt(), dy.toInt());
+              map[x][y] = noise.singleSimplexFractalBillow2(dx, dy);
               break;
             case FractalType.RigidMulti:
-              map[x][y] =
-                  noise.singleSimplexFractalRigidMulti2(dx.toInt(), dy.toInt());
+              map[x][y] = noise.singleSimplexFractalRigidMulti2(dx, dy);
               break;
           }
         }
@@ -479,8 +476,7 @@ List<List<List<double>>> noise3(int width, int height, int depth,
           for (var z = 0; z < height; z++) {
             final dx = x * frequency, dy = y * frequency, dz = z * frequency;
 
-            map[x][y][z] =
-                noise.singleSimplex3(seed, dx.toInt(), dy.toInt(), dz.toInt());
+            map[x][y][z] = noise.singleSimplex3(seed, dx, dy, dz);
           }
         }
       }
@@ -505,16 +501,14 @@ List<List<List<double>>> noise3(int width, int height, int depth,
 
             switch (fractalType) {
               case FractalType.FBM:
-                map[x][y][z] = noise.singleSimplexFractalFBM3(
-                    dx.toInt(), dy.toInt(), dz.toInt());
+                map[x][y][z] = noise.singleSimplexFractalFBM3(dx, dy, dz);
                 break;
               case FractalType.Billow:
-                map[x][y][z] = noise.singleSimplexFractalBillow3(
-                    dx.toInt(), dy.toInt(), dz.toInt());
+                map[x][y][z] = noise.singleSimplexFractalBillow3(dx, dy, dz);
                 break;
               case FractalType.RigidMulti:
-                map[x][y][z] = noise.singleSimplexFractalRigidMulti3(
-                    dx.toInt(), dy.toInt(), dz.toInt());
+                map[x][y][z] =
+                    noise.singleSimplexFractalRigidMulti3(dx, dy, dz);
                 break;
             }
           }
